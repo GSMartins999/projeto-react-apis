@@ -9,7 +9,6 @@ export const DetailsPage = () => {
         <Header/>
         <ContainerCard>
         <H1>Detalhes</H1>
-        <Card/>
         </ContainerCard>
         </>
     )

@@ -6,11 +6,16 @@ export const ContainerCard = styled.div`
     width: 100vw;
     min-height: 100vh;
     padding-top: 20px;
-    padding-inline: 40px;
     gap: 10px;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-direction: column;
 `
 export const H1 = styled.h1`
     color: white;
+    text-align: left;
+
 `
 
 export const Button = styled.button`
@@ -31,4 +36,27 @@ export const Button = styled.button`
     &:hover{
         color: orange;
     }
+`
+
+export const Containerzao = styled.div`
+    width: 95%;
+    height: auto;
+    background-color: black;
+    flex-wrap: wrap;
+    border: 2px solid beige;
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    padding-top: 10px;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+`
+
+
+export const ContainerTexto = styled.div`
+    margin: 40px;
 `

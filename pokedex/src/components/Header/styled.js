@@ -44,6 +44,7 @@ export const Button = styled.button`
 `
 export const Voltar = styled.p`
     color: black;
+    border-bottom: solid black 2px;
 `
 export const ContainerVoltar = styled.p`
     color: black;

@@ -29,7 +29,7 @@ export const Header = () => {
         <>
           <ContainerVoltar onClick={() => goToHome(navigate)}>
             <AiOutlineArrowLeft />
-            <Voltar> Todos os pokemons</Voltar>
+            <Voltar> <strong>Todos os pokemons</strong></Voltar>
           </ContainerVoltar>
           <ContainerLogo>
             <Logo src={logo} alt="logo-pokemon" />

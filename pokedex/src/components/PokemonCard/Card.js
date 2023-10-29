@@ -1,57 +1,38 @@
-import { useLocation, useNavigate } from "react-router-dom"
-import { Container, Conteudo } from "./styled"
-import { goToDetalhes } from "../../Router/cordinator"
-
-export const Card = () => {
-    const navigate = useNavigate()
-    const location = useLocation()
-    return( 
-            <Container>
-                <Conteudo>
-                    <p>O Carai</p>
-                </Conteudo>
-            {
-                location.pathname === "/" || location.pathname === "/pokedex"? (
-                    <button onClick={() => goToDetalhes(navigate)}>Detalhes</button>
-
-                ) : ( 
-                    ("")
-                )
-            }
-            {
-                location.pathname === "/" ? (
-                    <button>Capturar</button>
-                ) : (
-                    ("")
-                )
-            }
-            {
-                location.pathname === "/pokedex" ? (
-                    <button>Excluir</button>
-                ) : (
-                    ("")
-                )
-            }
-            {
-                location.pathname === "/detalhes" ? (
-                     ("")
-                ) : (
-                    ("")
-                )
-            }
+import { useLocation, useNavigate } from "react-router-dom";
+import { Capturar, Container, ContainerBotoes, Containerzao, Conteudo, Detalhes } from "./styled";
+import { goToDetalhes } from "../../Router/cordinator";
 
 
-            </Container>
-    )
-}
+// Recebendo nossas props:
+export const Card = ({name}) => {
+  //Chamando nossas rotas: 
+  const navigate = useNavigate();
+  const location = useLocation();
 
 
-// {location.pathname === "/" ? (
-//     <button>
-//       Adicionar à Pokedex
-//     </button>
-//   ) : (
-//     <button>
-//       Remover da Pokedex
-//     </button>
-//   )}
+  return (
+    <>
+    <Container>
+    <Conteudo>
+      {/* Recebendo nossos atributos por props */}
+     <p>{name}</p>
+     <img src={""}/>
+
+
+
+     <ContainerBotoes>
+    {/* Organizando qual botão mostrar na tela: */}
+      {location.pathname === "/" || location.pathname === "/pokedex" ? (
+       <Detalhes onClick={() => goToDetalhes(navigate)}><strong>Detalhes</strong></Detalhes>
+      ) : (
+        ""
+      )}
+      {location.pathname === "/" ? <Capturar>Capturar</Capturar>: ""}
+      {location.pathname === "/pokedex" ? <button>Excluir</button> : ""}
+      {location.pathname === "/detalhes" ? "" : ""}
+      </ContainerBotoes>
+      </Conteudo>
+    </Container>
+    </>
+  );
+};

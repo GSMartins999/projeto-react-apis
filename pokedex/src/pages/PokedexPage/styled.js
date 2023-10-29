@@ -13,3 +13,7 @@ export const H1 = styled.h1`
     color: white;
 `
 
+export const ContainerTexto = styled.div`
+    margin: 40px;
+`
+
