@@ -3,6 +3,7 @@ import { Router } from './Router/Router';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { GlobalContext } from './contexts/GlobalContexts';
+import {BASE_URL} from "../src/contants"
 
 
 const GlobalStyle  = createGlobalStyle`
@@ -17,7 +18,6 @@ function App() {
   //Requisição e armazanemanto em um estado: 
   const [pokemons, setPokemons] = useState([]);
 
-  const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 
   const getAllPokemons = async () => {
   try{

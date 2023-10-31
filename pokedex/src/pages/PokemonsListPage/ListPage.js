@@ -10,6 +10,8 @@ export const ListPage = () => {
     const context = useContext(GlobalContext)
     const { pokemons } = context
 
+    console.log(context)
+
     return(
         <>
         <Header/>
@@ -22,7 +24,7 @@ export const ListPage = () => {
         {
             pokemons.map((pokemon) => {
                 // Passando os atributos por props direito pro nosso Card: 
-                return <Card key={pokemon.name} name={pokemon.name} pokemonUrl={pokemon.url} type={pokemon.type}/>
+                return <Card key={pokemon.name} name={pokemon.name} url={pokemon.url}/>
             })
         }
         </Containerzao>
