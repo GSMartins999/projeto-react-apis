@@ -15,35 +15,43 @@ const GlobalStyle  = createGlobalStyle`
 function App() {
 
   //Requisição e armazanemanto em um estado: 
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemon] = useState([]);
+  const [pokedex, setPokedex ] = useState([]);
 
-  const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
-
-  const getAllPokemons = async () => {
-  try{
-    const response = await axios.get(BASE_URL)
-        setPokemons(response.data.results);
-        console.log(response.data.results)
-      }catch(error) {
-      console.log(error.response)
-    }
-  };
 
   useEffect(() => {
-    getAllPokemons();
+    getPokemons();
   }, []);
-  //
+
+  const getPokemons = () => {
+    var endpoints = [];
+    for (var i = 1; i < 50; i++) {
+      endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+    }
+    axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((res) => setPokemon(res));
+  };
+
+  const addToPokedex = (pokemonToAdd) => {
+    const estaNaPokedex = pokedex.find((pokemonNaPokedex) => pokemonNaPokedex.name === pokemonToAdd.name
+    )
+
+    if(!estaNaPokedex){
+      const newPokedex = [...pokedex, pokemonToAdd];
+      setPokedex(newPokedex)
+    }
+  }
 
   //Criando um contexto Global:
   const context = {
-    pokemons
+    pokemons,
+    pokedex,
   }
   //
   return (
     // Chamando um contexto Global:
     <GlobalContext.Provider value={context}>
     <GlobalStyle/>
-    <Router/>
+    <Router addToPokedex={addToPokedex}/>
     </GlobalContext.Provider>
   );
 }
