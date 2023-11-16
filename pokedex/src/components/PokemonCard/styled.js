@@ -30,6 +30,7 @@ export const Detalhes = styled.p`
     text-align: center;
     height: 3vh;
     border: solid orange 5px;
+    cursor: pointer;
 
 `
 
@@ -41,6 +42,7 @@ export const Capturar = styled.button`
     border-radius: 10px;
     border: none;
     border: solid red 5px;
+    cursor: pointer;
 
 `
 export const ContainerBotoes = styled.div`

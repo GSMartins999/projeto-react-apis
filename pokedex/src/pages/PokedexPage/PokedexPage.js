@@ -1,10 +1,11 @@
 import { Card } from "../../components/PokemonCard/Card";
 import { Header } from "../../components/Header/Header";
 import { ContainerCard, ContainerTexto, H1} from "./styled";
+import { BASE_URL } from "../../contants.js"
 
 
 
-export const PokedexPage = () => {
+export const PokedexPage = ({pokedex}) => {
 
     return(
         <>

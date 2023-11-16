@@ -5,15 +5,14 @@ import { ListPage } from "../pages/PokemonsListPage/ListPage";
 
 
 
-export const Router = () => {
-
+export const Router = ({addToPokedex}) => {
 
     return(
         // Criando nossas rotas:
         <BrowserRouter>
         <Routes>
-            <Route path="/" element={ <ListPage />}/>
-            <Route path="pokedex" element={ <PokedexPage/> }/>
+            <Route path="/" element={ <ListPage addToPokedex={addToPokedex}/>}/>
+            <Route path="pokedex" element={ <PokedexPage /> }/>
             <Route path="detalhes" element={ <DetailsPage />}/>
         </Routes>
         </BrowserRouter>
