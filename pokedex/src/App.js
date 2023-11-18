@@ -1,57 +1,67 @@
-import { createGlobalStyle } from 'styled-components';
-import { Router } from './Router/Router';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { GlobalContext } from './contexts/GlobalContexts';
+import { createGlobalStyle } from "styled-components";
+import { Router } from "./Router/Router";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { GlobalContext } from "./contexts/GlobalContexts";
+import { BASE_URL } from "./contants";
 
-
-const GlobalStyle  = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   body{
     padding: 0;
     margin: 0;
   }
-`
+`;
 
 function App() {
-
-  //Requisição e armazanemanto em um estado: 
-  const [pokemons, setPokemon] = useState([]);
-  const [pokedex, setPokedex ] = useState([]);
-
+  //Requisição e armazanemanto em um estado:
+  const [pokeList, setPokeList] = useState([]);
+  const [pokedex, setPokedex] = useState([]);
 
   useEffect(() => {
-    getPokemons();
+    getPokelist();
   }, []);
 
-  const getPokemons = () => {
-    var endpoints = [];
-    for (var i = 1; i < 50; i++) {
-      endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+  const getPokelist = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}?limit=45&offset=0`);
+      setPokeList(response.data.results);
+    } catch (error) {
+      console.log("Erro ao buscar lista de pokemons");
+      console.log(error.response);
     }
-    axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((res) => setPokemon(res));
   };
 
   const addToPokedex = (pokemonToAdd) => {
-    const estaNaPokedex = pokedex.find((pokemonNaPokedex) => pokemonNaPokedex.name === pokemonToAdd.name
-    )
+    const isAlreadyOnPokedex = pokedex?.find(
+      (pokemonInPokedex) => pokemonInPokedex.name === pokemonToAdd.name
+    );
 
-    if(!estaNaPokedex){
+    if (!isAlreadyOnPokedex) {
       const newPokedex = [...pokedex, pokemonToAdd];
-      setPokedex(newPokedex)
+      setPokedex(newPokedex);
     }
-  }
+  };
+
+  const removeFromPokedex = (pokemonToRemove) => {
+    const newPokedex = pokedex.filter(
+      (pokemonInPokedex) => pokemonInPokedex.name !== pokemonToRemove.name
+    );
+    setPokedex(newPokedex);
+  };
 
   //Criando um contexto Global:
   const context = {
-    pokemons,
+    pokeList,
     pokedex,
-  }
+    addToPokedex,
+    removeFromPokedex,
+  };
   //
   return (
     // Chamando um contexto Global:
     <GlobalContext.Provider value={context}>
-    <GlobalStyle/>
-    <Router addToPokedex={addToPokedex}/>
+      <GlobalStyle />
+      <Router />
     </GlobalContext.Provider>
   );
 }
