@@ -10,47 +10,67 @@ import {
   Conteudo,
   Detalhes,
   ImgPokemons,
+  Pokebola,
 } from "./styled";
 import { goToDetalhes } from "../../Router/cordinator";
 import { GlobalContext } from "../../contexts/GlobalContexts";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import pokebola from "../../img/pokebola2.png"
+
 
 // Recebendo nossas props:
-export const Card = ({ name, image, types, id, addToPokedex }) => {
+export const Card = ({ pokemonsUrl }) => {
+
+
+
+  const [pokemon, setPokemon ] = useState({});
   //Chamando nossas rotas:
   const navigate = useNavigate();
   const location = useLocation();
 
 
   const context = useContext(GlobalContext);
-  const { pokemons } = context;
+  const { addToPokedex, removeFromPokedex } = context;
 
-  const typeHandler = () => {
-    if (types[1]) {
-      return types[0].type.name + " | " + types[1].type.name;
+
+  const getAtributos = async () =>{
+    try{
+      const response = await axios.get(pokemonsUrl);
+      setPokemon(response.data)      
+    } catch(error){
+      console.log('Error', error.response);
     }
-    return types[0].type.name;
-  };
+  }
+
+  //Renderizar na tela
+  useEffect(()=>{
+    getAtributos();
+  }, [])
+
+
+  const type = pokemon.types && pokemon.types[0].type.name
 
   return (
     <>
       <Container>
         <Conteudo>
           <ContainerAtriImg>
+            
             {/* Recebendo nossos atributos por props */}
             <ContainerTextoAndTypes>
               <p>
-                <strong>#{id}</strong>
+                <strong>#{pokemon.id}</strong>
               </p>
               <p>
-                <strong>{name}</strong>
+                <strong>{pokemon.name}</strong>
               </p>
               <ContainerTypes>
-                {typeHandler(types)}
+              {type}
               </ContainerTypes>
             </ContainerTextoAndTypes>
             <ContainerImg>
-              <ImgPokemons src={image} alt={name} />
+              <ImgPokemons src={pokemon.sprites?.other["official-artwork"].front_default} alt={pokemon.name} />
             </ContainerImg>
           </ContainerAtriImg>
           <ContainerBotoes>
@@ -62,8 +82,8 @@ export const Card = ({ name, image, types, id, addToPokedex }) => {
             ) : (
               ""
             )}
-            {location.pathname === "/" ? <Capturar onClick={() => addToPokedex(pokemons)}>Capturar</Capturar> : ""}
-            {location.pathname === "/pokedex" ? <button>Excluir</button> : ""}
+            {location.pathname === "/" ? <Capturar onClick={()=>addToPokedex(pokemon)}>Capturar</Capturar> : ""}
+            {location.pathname === "/pokedex" ? <button onClick={()=>removeFromPokedex(pokemon)}>Excluir</button> : ""}
             {location.pathname === "/detalhes" ? "" : ""}
           </ContainerBotoes>
         </Conteudo>

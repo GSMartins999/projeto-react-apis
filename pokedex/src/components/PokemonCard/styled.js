@@ -15,12 +15,12 @@ export const Container = styled.div`
 export const Conteudo = styled.div`
     width: 400px;
     height: 280px;
-    background-color: blue;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: solid pink 5px;
+
 `
 
 export const Detalhes = styled.p`
@@ -112,4 +112,14 @@ export const ContainerAtriImg = styled.div`
     align-items: center;
     border: solid black 2px;
     width: 100%;
+`
+export const ContainerPokebola = styled.div`
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border: solid yellow 2px;
+`
+
+export const Pokebola = styled.div`
+    z-index: 10;
 `
