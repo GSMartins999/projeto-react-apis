@@ -2,21 +2,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   Capturar,
   Container,
+  ContainerAtri,
   ContainerAtriImg,
+  ContainerAtributos,
   ContainerBotoes,
   ContainerImg,
-  ContainerTextoAndTypes,
-  ContainerTypes,
   Conteudo,
   Detalhes,
   ImgPokemons,
   Pokebola,
+  Tipo,
 } from "./styled";
 import { goToDetalhes } from "../../Router/cordinator";
 import { GlobalContext } from "../../contexts/GlobalContexts";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import pokebola from "../../img/pokebola2.png"
+
 
 
 // Recebendo nossas props:
@@ -34,10 +36,11 @@ export const Card = ({ pokemonsUrl }) => {
   const { addToPokedex, removeFromPokedex } = context;
 
 
+
   const getAtributos = async () =>{
     try{
       const response = await axios.get(pokemonsUrl);
-      setPokemon(response.data)      
+      setPokemon(response.data)
     } catch(error){
       console.log('Error', error.response);
     }
@@ -49,26 +52,28 @@ export const Card = ({ pokemonsUrl }) => {
   }, [])
 
 
-  const type = pokemon.types && pokemon.types[0].type.name
+  const type = pokemon.name && pokemon.types[0].type.name
+  const nomes = pokemon.name
 
+  
   return (
     <>
       <Container>
-        <Conteudo>
+        <Conteudo  type = {type}>
+          {/* <img src={pokebola}/> */}
           <ContainerAtriImg>
-            
             {/* Recebendo nossos atributos por props */}
-            <ContainerTextoAndTypes>
-              <p>
-                <strong>#{pokemon.id}</strong>
-              </p>
-              <p>
-                <strong>{pokemon.name}</strong>
-              </p>
-              <ContainerTypes>
-              {type}
-              </ContainerTypes>
-            </ContainerTextoAndTypes>
+            
+            <ContainerAtri>
+              <ContainerAtributos>
+               #{pokemon.id}
+               {/* <br/> */}
+                <strong>{nomes}</strong>
+              </ContainerAtributos>
+              {/* <div>{type}</div> */}
+              <Tipo type = {type}><img src={pokebola} height="10px"/>{type}
+              </Tipo>
+            </ContainerAtri>
             <ContainerImg>
               <ImgPokemons src={pokemon.sprites?.other["official-artwork"].front_default} alt={pokemon.name} />
             </ContainerImg>

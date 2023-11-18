@@ -41,7 +41,6 @@ export const Button = styled.button`
 export const Containerzao = styled.div`
     width: 95%;
     height: auto;
-    background-color: black;
     flex-wrap: wrap;
     border: 2px solid beige;
     display: flex;
