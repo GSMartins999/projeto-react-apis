@@ -1,47 +1,112 @@
 import styled from "styled-components";
 
+const getColors = {
+    "water": "#71C3FF" ,
+    "bug" : "#76A866",
+    "dark": "#A79FA6",
+    "dragon": "#004170",
+    'electric': '#F2E7AA',
+    'fairy': '#E9CDEA',
+    'fighting': '#D88EAB',
+    'fire':'#EAAB7D',
+    'flying': '#A4B8C9',
+    'ghost':'#9B9FB9',
+    'grass':'#729F92',
+    'ground': '#E1A48A',
+    'ice':'#B5DCD5',
+  'normal':'#BF9762',
+  'poison':'#C5A9C4',
+  'psychic':'#F3A9A9',
+   'rock':'#D2CAB3',
+   'steel': '#C8C8C8'
+  }
+
+
+const getColorsTipos = {
+    'normal': '#A8A878',
+    'fire': '#F08030',
+    'fighting': '#C03028',
+    'water': '#6890F0',
+    'flying': '#A890F0',
+    'grass': '#78C850',
+    'poison': '#A040A0',
+    'electric': '#F8D030',
+    'ground': '#E0C068',
+    'rock': '#B8A038',
+    'ice': '#98D8D8',
+    'bug': '#A8B820',
+    'ghost': '#705898',
+    'steel': '#B8B8D0',
+    'dragon': '#7038F8',
+    'dark': '#705848',
+    'fairy': '#EE99AC',
+  };
+
+
+  const getIconsTipos = {
+    'normal': '#A8A878',
+    'fire': '#F08030',
+    'fighting': '#C03028',
+    'water': '#6890F0',
+    'flying': '#A890F0',
+    'grass': '#78C850',
+    'poison': '#A040A0',
+    'electric': '#F8D030',
+    'ground': '#E0C068',
+    'rock': '#B8A038',
+    'ice': '#98D8D8',
+    'bug': '#A8B820',
+    'ghost': '#705898',
+    'steel': '#B8B8D0',
+    'dragon': '#7038F8',
+    'dark': '#705848',
+    'fairy': '#EE99AC',
+  };
+
+
+
 export const Container = styled.div`
-    width: 500px;
-    min-width: 350px;
-    height: 300px;
-    background-color: red;
+    width: 440px;
+    min-width: 440px;
+    height: 263px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+    padding-top: 53px;
 `
 
 export const Conteudo = styled.div`
     width: 400px;
-    height: 280px;
+    height: 210px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid pink 5px;
+    border-radius: 10px;
+    background-color: blue;
+    background-color: ${props => getColors[props.type] };
+
 
 `
 
 export const Detalhes = styled.p`
     color: white;
-    border-bottom: solid white 2px;
-    width: 15%;
+    width: 74px;
+    height: 24px;
     text-align: center;
-    height: 3vh;
-    border: solid orange 5px;
     cursor: pointer;
 
 `
 
 export const Capturar = styled.button`
     background-color: white;
-    width: 20%;
+    width: 146px;
+    height: 38px;
     text-align: center;
-    height: 5vh;
     border-radius: 10px;
     border: none;
-    border: solid red 5px;
     cursor: pointer;
 
 `
@@ -50,9 +115,9 @@ export const ContainerBotoes = styled.div`
     align-items: center;
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 395px;
+    height: 38px;
     justify-content: space-between;
-    border: solid black 2px;
     
 `
 export const ContainerImg = styled.div`
@@ -61,57 +126,35 @@ export const ContainerImg = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
-    border: solid pink 5px;
+    margin-bottom: 90px;
 
 `
 
 export const ImgPokemons = styled.img`
-    width: 100%;
-    height: 100%;
-    border: solid red 5px;
-
-
+    width: 193px;
+    height: 193px;
 `
-export const ContainerTextoAndTypes = styled.div`
-    width: 40%;
-    height: 150px;
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
-    left: 0;
-    border: solid pink 2px;
-    padding: 5px;
-    color: white;
-
-`
-
-export const Type = styled.div`
-    width: 45%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #70B873;
-    border-radius: 10px;
-`
-export const ContainerTypes = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 60%;
-    gap: 3px;
-    width: 100%;
-    margin-bottom: 3px;
-`
-
 
 export const ContainerAtriImg = styled.div`
     justify-content: space-around;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: solid black 2px;
-    width: 100%;
+    width: 90%;
+    height: 150px;
+    border: solid beige 5px;
+`
+export const ContainerAtributos = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    height: 45px;
+    width: 100px;
+    color: white;
+    gap: 2px;
+    font-size: 20px;
+    margin-bottom: 10px;
 `
 export const ContainerPokebola = styled.div`
     justify-content: center;
@@ -120,6 +163,36 @@ export const ContainerPokebola = styled.div`
     border: solid yellow 2px;
 `
 
+export const ContainerAtri = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+`
+
+export const Tipo = styled.div`
+    background-color: ${props => getColorsTipos[props.type] };
+    width: 99px;
+    height: 31px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    gap: 15px;
+    color: white;
+
+`
+
 export const Pokebola = styled.div`
-    z-index: 10;
+    z-index: 0;
+`
+
+export const ContainerTipos = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+
 `
