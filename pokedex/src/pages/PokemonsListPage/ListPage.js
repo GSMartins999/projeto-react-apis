@@ -17,13 +17,7 @@ export const ListPage = () => {
       (pokemonInList) => !pokedex.find((pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
         )
     );
-
-    console.log(pokeList);
-
-
-    console.log("sasas",pokedex);
-
-
+    
   return (
     <>
       <Header />

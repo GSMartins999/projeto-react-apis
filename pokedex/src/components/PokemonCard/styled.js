@@ -149,11 +149,12 @@ export const ContainerAtributos = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    height: 30px;
+    height: 45px;
     width: 100px;
-    border: solid black 2px;
     color: white;
     gap: 2px;
+    font-size: 20px;
+    margin-bottom: 10px;
 `
 export const ContainerPokebola = styled.div`
     justify-content: center;
@@ -168,18 +169,30 @@ export const ContainerAtri = styled.div`
     gap: 20px;
 `
 
-export const Tipo = styled.section`
+export const Tipo = styled.div`
     background-color: ${props => getColorsTipos[props.type] };
-    width: 80px;
+    width: 99px;
     height: 31px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     border-radius: 10px;
-    gap: 10px;
+    gap: 15px;
+    color: white;
+
 `
 
 export const Pokebola = styled.div`
     z-index: 0;
+`
+
+export const ContainerTipos = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+
 `

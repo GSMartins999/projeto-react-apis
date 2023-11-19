@@ -42,7 +42,6 @@ export const Containerzao = styled.div`
     width: 95%;
     height: auto;
     flex-wrap: wrap;
-    border: 2px solid beige;
     display: flex;
     justify-content: start;
     flex-direction: row;
