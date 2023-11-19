@@ -76,6 +76,7 @@ export const Card = ({ pokemonsUrl }) => {
               </ContainerTipos>
             </ContainerAtri>
             <ContainerImg>
+            <Pokebola src={pokebola}/>
               <ImgPokemons src={pokemon.sprites?.other["official-artwork"].front_default} alt={pokemon.name} />
             </ContainerImg>
           </ContainerAtriImg>
@@ -87,8 +88,8 @@ export const Card = ({ pokemonsUrl }) => {
             ) : (
               ""
             )}
-            {location.pathname === "/" ? <Capturar onClick={() => addToPokedex(pokemon)}>Capturar</Capturar> : ""}
-            {location.pathname === "/pokedex" ? <button onClick={() => removeFromPokedex(pokemon)}>Excluir</button> : ""}
+            {location.pathname === "/" ? <Capturar onClick={() => addToPokedex(pokemon)}><strong>Capturar!</strong></Capturar> : ""}
+            {location.pathname === "/pokedex" ? <Capturar style={{ backgroundColor: "#FF6262", color: "white", }} onClick={() => removeFromPokedex(pokemon)}><strong>Excluir</strong></Capturar> : ""}
             {location.pathname === "/detalhes" ? "" : ""}
           </ContainerBotoes>
         </Conteudo>
