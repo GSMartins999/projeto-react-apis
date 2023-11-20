@@ -43,26 +43,6 @@ const getColorsTipos = {
   };
 
 
-  const getIconsTipos = {
-    'normal': '#A8A878',
-    'fire': '#F08030',
-    'fighting': '#C03028',
-    'water': '#6890F0',
-    'flying': '#A890F0',
-    'grass': '#78C850',
-    'poison': '#A040A0',
-    'electric': '#F8D030',
-    'ground': '#E0C068',
-    'rock': '#B8A038',
-    'ice': '#98D8D8',
-    'bug': '#A8B820',
-    'ghost': '#705898',
-    'steel': '#B8B8D0',
-    'dragon': '#7038F8',
-    'dark': '#705848',
-    'fairy': '#EE99AC',
-  };
-
 
 
 export const Container = styled.div`
@@ -133,6 +113,8 @@ export const ContainerImg = styled.div`
 export const ImgPokemons = styled.img`
     width: 193px;
     height: 193px;
+    position: absolute;
+    margin-left: 20px;
 `
 
 export const ContainerAtriImg = styled.div`
@@ -142,7 +124,6 @@ export const ContainerAtriImg = styled.div`
     align-items: center;
     width: 90%;
     height: 150px;
-    border: solid beige 5px;
 `
 export const ContainerAtributos = styled.div`
     display: flex;
@@ -171,20 +152,24 @@ export const ContainerAtri = styled.div`
 
 export const Tipo = styled.div`
     background-color: ${props => getColorsTipos[props.type] };
-    width: 99px;
+    width: 200px;
     height: 31px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    border-radius: 10px;
-    gap: 15px;
+    border-radius: 15px;
     color: white;
-
+    margin-bottom: 5px;
+    gap: 10px;
 `
 
-export const Pokebola = styled.div`
-    z-index: 0;
+export const Pokebola = styled.img`
+    width: 280px;
+    margin-top: 90px;
+    height: 150px;
+    color: black;
+
 `
 
 export const ContainerTipos = styled.div`
@@ -194,5 +179,8 @@ export const ContainerTipos = styled.div`
     justify-content: left;
     align-items: center;
     gap: 10px;
+    margin-right: 80px;
 
 `
+
+export default getColors;

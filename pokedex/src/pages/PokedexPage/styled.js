@@ -16,4 +16,18 @@ export const H1 = styled.h1`
 export const ContainerTexto = styled.div`
     margin: 40px;
 `
+export const Containerzao = styled.div`
+    width: 95%;
+    height: auto;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    padding-top: 10px;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 
+`
