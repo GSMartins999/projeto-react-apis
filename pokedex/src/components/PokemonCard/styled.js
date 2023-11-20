@@ -182,3 +182,5 @@ export const ContainerTipos = styled.div`
     margin-right: 80px;
 
 `
+
+export default getColors;

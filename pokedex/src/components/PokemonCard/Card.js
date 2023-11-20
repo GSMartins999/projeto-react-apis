@@ -39,10 +39,11 @@ import water from "../../img/water.png";
 import dark from "../../img/dark.png";
 
 
-export const Card = ({ pokemonsUrl }) => {
+export const Card = ({ pokemonsUrl, onDetailsClick  }) => {
   const [pokemon, setPokemon] = useState({});
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
   const context = useContext(GlobalContext);
   const { addToPokedex, removeFromPokedex } = context;
 
@@ -165,7 +166,7 @@ export const Card = ({ pokemonsUrl }) => {
   return (
     <>
       <Container>
-        <Conteudo
+      <Conteudo
           type={
             type && type.length > 0
               ? type[0].type.name
@@ -191,11 +192,11 @@ export const Card = ({ pokemonsUrl }) => {
             </ContainerImg>
           </ContainerAtriImg>
           <ContainerBotoes>
-            {location.pathname === "/" || location.pathname === "/pokedex" ? (
-              <Detalhes onClick={() => goToDetalhes(navigate)}>
-                <strong>Detalhes</strong>
-              </Detalhes>
-            ) : (
+          {location.pathname === "/" || location.pathname === "/pokedex" ? (
+            <Detalhes onClick={() => goToDetalhes(navigate)}>
+            <strong>Detalhes</strong>
+          </Detalhes>
+          ) : (
               ""
             )}
             {location.pathname === "/" ? (
