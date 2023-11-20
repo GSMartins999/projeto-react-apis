@@ -2,8 +2,8 @@ import styled from "styled-components"
 
 export const ContainerCard = styled.div`
     background-color: #5E5E5E;
-    height: auto;
-    width: 100vw;
+    height: 100vh;
+    width: 100%;
     min-height: 100vh;
     padding-top: 20px;
     padding-inline: 40px;
@@ -15,7 +15,8 @@ export const H1 = styled.h1`
 
 export const ContainerAtri = styled.div`
     width: 93%;
-    height: 663px;
+    height: 633px;
+    min-height: 500px;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -28,71 +29,87 @@ export const ContainerAtri = styled.div`
 export const ContainerImgs = styled.div`
     width: 300px;
     height: 90%;
-    background-color: white;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     flex-direction: column;
+    padding: 10px;
 `
 
 export const Img1 = styled.div`
     width: 282px;
     height: 282px;
-    background-color: red;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+
 `
 
 export const Img2 = styled.div`
     width: 282px;
     height: 282px;
-    background-color: blue;
+    background-color: white;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const ContainerBaseStats = styled.div`
-    background-color: white;
     width: 343px;
-    height: 90%;
+    height: auto;
+    min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: start;
     top: 10px;
     border-radius: 10px;
+    background-color: white;
+    padding-bottom: 20px;
+
 `
 
 export const Stats = styled.div`
-    background-color: salmon;
     width: 307px;
     height: 257px;
     margin-top: 10px;
+    color: black;
+    
+
 `
 
 export const ContainerMovimentos = styled.div`
-    background-color: salmon;
     width: 500px;
-    height: auto;
-    margin-top: 10px;
+    height: 300px;
     border-radius:10px;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: lemonchiffon;
     min-height: 200px;
+    background-color: white;
+    padding-bottom: 20px;
+
+
 `
 
 export const Moves = styled.div`
     width: 200px;
-    height: auto;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    /* height: auto; */
+    height: 200px;
     border-radius:10px;
     justify-content: center;
     align-items: center;
     background-color: white;
-    border: solid black 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+
 `
 
 export const ContainerPokemon = styled.div`

@@ -39,13 +39,12 @@ import water from "../../img/water.png";
 import dark from "../../img/dark.png";
 
 
-export const Card = ({ pokemonsUrl, onDetailsClick  }) => {
+export const Card = ({ pokemonsUrl, onDetailsClick }) => {
   const [pokemon, setPokemon] = useState({});
-  // const navigate = useNavigate();
   const location = useLocation();
   const navigate = useNavigate();
   const context = useContext(GlobalContext);
-  const { addToPokedex, removeFromPokedex } = context;
+  const { addToPokedex, removeFromPokedex, setSelectedPokemon } = context;
 
   const getAtributos = async () => {
     try {
@@ -153,7 +152,7 @@ export const Card = ({ pokemonsUrl, onDetailsClick  }) => {
     } else if (pokemon.types && pokemon.types.length === 1) {
       return <ComponenteComSwitch type={pokemon.types[0].type.name} />;
     } else {
-      return "Tipo não especificado"; // ou qualquer valor padrão desejado
+      return "Tipo não especificado";
     }
   };
 
@@ -166,7 +165,7 @@ export const Card = ({ pokemonsUrl, onDetailsClick  }) => {
   return (
     <>
       <Container>
-      <Conteudo
+        <Conteudo
           type={
             type && type.length > 0
               ? type[0].type.name
@@ -177,7 +176,9 @@ export const Card = ({ pokemonsUrl, onDetailsClick  }) => {
             <ContainerAtri>
               <ContainerAtributos>
                 #{pokemon.id}
-                <strong>{capitalizarPrimeiraLetra(pokemon.name || "")}</strong>
+                <strong>
+                  {capitalizarPrimeiraLetra(pokemon.name || "")}
+                </strong>
               </ContainerAtributos>
               <ContainerTipos>
                 <Tipo>{tipos(type)}</Tipo>
@@ -193,9 +194,14 @@ export const Card = ({ pokemonsUrl, onDetailsClick  }) => {
           </ContainerAtriImg>
           <ContainerBotoes>
           {location.pathname === "/" || location.pathname === "/pokedex" ? (
-            <Detalhes onClick={() => goToDetalhes(navigate)}>
-            <strong>Detalhes</strong>
-          </Detalhes>
+                       <Detalhes
+                       onClick={() => {
+                         setSelectedPokemon(pokemon);
+                         navigate(`/detalhes/${pokemon.name}`);
+                       }}
+                     >
+                       <strong>Detalhes</strong>
+                     </Detalhes>
           ) : (
               ""
             )}
