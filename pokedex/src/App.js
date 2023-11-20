@@ -13,17 +13,17 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  //Requisição e armazanemanto em um estado:
   const [pokeList, setPokeList] = useState([]);
   const [pokedex, setPokedex] = useState([]);
 
+  //Requisição e armazanemanto em um estado:
   useEffect(() => {
     getPokelist();
   }, []);
 
   const getPokelist = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}?limit=45&offset=0`);
+      const response = await axios.get(`${BASE_URL}?limit=150 &offset=0`);
       setPokeList(response.data.results);
     } catch (error) {
       console.log("Erro ao buscar lista de pokemons");

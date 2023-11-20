@@ -152,15 +152,16 @@ export const ContainerAtri = styled.div`
 
 export const Tipo = styled.div`
     background-color: ${props => getColorsTipos[props.type] };
-    width: 99px;
+    width: 200px;
     height: 31px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    border-radius: 10px;
+    border-radius: 15px;
     color: white;
     margin-bottom: 5px;
+    gap: 10px;
 `
 
 export const Pokebola = styled.img`
@@ -178,5 +179,6 @@ export const ContainerTipos = styled.div`
     justify-content: left;
     align-items: center;
     gap: 10px;
+    margin-right: 80px;
 
 `
